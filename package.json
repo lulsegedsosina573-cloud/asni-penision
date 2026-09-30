@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/bookings" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ]
+}
