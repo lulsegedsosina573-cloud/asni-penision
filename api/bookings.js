@@ -1,10 +1,10 @@
 // Vercel Serverless Function - proxies requests to Cloudflare Worker
 
-const WORKER_URL = process.env.WORKER_URL; // e.g. https://asni-worker.YOUR_SUBDOMAIN.workers.dev
-const API_SECRET = process.env.API_SECRET; // shared secret to protect worker
+const WORKER_URL = (process.env.WORKER_URL || '').replace(/\/$/, ''); // strip trailing slash
+const API_SECRET = process.env.API_SECRET;
 
 export default async function handler(req, res) {
-    // CORS headers
+    // CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
@@ -18,7 +18,11 @@ export default async function handler(req, res) {
     }
 
     try {
-        const target = `${WORKER_URL}${req.url.replace(/^\/api/, '')}`;
+        // Build the target URL robustly
+        // req.url might be "/api/bookings?email=..." OR full URL
+        const incoming = new URL(req.url, `https://${req.headers.host}`);
+        const workerPath = incoming.pathname.replace(/^\/api/, ''); // "/bookings"
+        const target = `${WORKER_URL}${workerPath}${incoming.search}`; // WORKER_URL/bookings?email=...
 
         const fetchOptions = {
             method: req.method,
@@ -40,6 +44,6 @@ export default async function handler(req, res) {
         return res.status(workerRes.status).json(data);
     } catch (err) {
         console.error('Proxy error:', err);
-        return res.status(502).json({ error: 'Upstream service unavailable' });
+        return res.status(502).json({ error: 'Upstream service unavailable', detail: err.message });
     }
 }
