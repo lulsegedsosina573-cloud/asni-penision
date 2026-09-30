@@ -148,49 +148,94 @@
             const all = await DB.getAll();
             if (all.length > 0) return;
             const demo = [
-                {
-                    id: 'RM-DEMO001', type: 'room', name: 'Abebe Bekele',
-                    email: 'abebe@example.com', phone: '+251911223344',
-                    room_type: 'double', check_in: '2025-12-10', check_out: '2025-12-14',
-                    guests: 2, requests: 'Non-smoking room, high floor if possible',
-                    status: 'confirmed', created_at: '2025-11-20T10:15:00Z'
-                },
-                {
-                    id: 'RM-DEMO002', type: 'room', name: 'Sara Tesfaye',
-                    email: 'sara@example.com', phone: '+251922334455',
-                    room_type: 'suite', check_in: '2025-12-20', check_out: '2025-12-25',
-                    guests: 3, requests: 'Anniversary trip - flowers in room please',
-                    status: 'pending', created_at: '2025-11-22T14:30:00Z'
-                },
-                {
-                    id: 'RM-DEMO003', type: 'room', name: 'John Smith',
-                    email: 'john@example.com', phone: '+251933445566',
-                    room_type: 'single', check_in: '2025-12-05', check_out: '2025-12-07',
-                    guests: 1, requests: '',
-                    status: 'confirmed', created_at: '2025-11-18T09:00:00Z'
-                },
-                {
-                    id: 'RS-DEMO001', type: 'restaurant', name: 'Marta Girma',
-                    email: 'marta@example.com', phone: '+251944556677',
-                    date: '2025-12-12', time: '19:30', guests: 4,
-                    table_preference: 'window', requests: 'Birthday dinner - bring cake at the end',
-                    status: 'confirmed', created_at: '2025-11-21T16:00:00Z'
-                },
-                {
-                    id: 'RS-DEMO002', type: 'restaurant', name: 'Dawit Haile',
-                    email: 'dawit@example.com', phone: '+251955667788',
-                    date: '2025-12-15', time: '20:00', guests: 2,
-                    table_preference: 'outdoor', requests: 'Vegetarian menu options please',
-                    status: 'pending', created_at: '2025-11-23T11:45:00Z'
-                },
-                {
-                    id: 'RS-DEMO003', type: 'restaurant', name: 'Hanna Alemu',
-                    email: 'hanna@example.com', phone: '+251966778899',
-                    date: '2025-12-18', time: '13:00', guests: 6,
-                    table_preference: 'private', requests: 'Business lunch - quiet corner preferred',
-                    status: 'confirmed', created_at: '2025-11-24T08:30:00Z'
-                }
-            ];
+    // ==================== ROOM BOOKINGS ====================
+    {
+        id: 'RM-DEMO001', type: 'room', name: 'Abebe Bekele',
+        email: 'abebe@example.com', phone: '+251911223344',
+        room_type: 'double', check_in: '2025-12-10', check_out: '2025-12-14',
+        guests: 2, requests: 'Non-smoking room, high floor if possible',
+        status: 'confirmed', created_at: '2025-11-20T10:15:00Z'
+    },
+    {
+        id: 'RM-DEMO002', type: 'room', name: 'Sara Tesfaye',
+        email: 'sara@example.com', phone: '+251922334455',
+        room_type: 'suite', check_in: '2025-12-20', check_out: '2025-12-25',
+        guests: 3, requests: 'Anniversary trip - flowers in room please',
+        status: 'pending', created_at: '2025-11-22T14:30:00Z'
+    },
+    {
+        id: 'RM-DEMO003', type: 'room', name: 'John Smith',
+        email: 'john@example.com', phone: '+251933445566',
+        room_type: 'single', check_in: '2025-12-05', check_out: '2025-12-07',
+        guests: 1, requests: '',
+        status: 'confirmed', created_at: '2025-11-18T09:00:00Z'
+    },
+    {
+        id: 'RM-DEMO004', type: 'room', name: 'Hanna Getachew',
+        email: 'hanna.g@example.com', phone: '+251944112233',
+        room_type: 'family', check_in: '2025-12-28', check_out: '2026-01-02',
+        guests: 5, requests: 'Two extra beds for children, please',
+        status: 'confirmed', created_at: '2025-11-25T08:20:00Z'
+    },
+    {
+        id: 'RM-DEMO005', type: 'room', name: 'Yonas Mekonnen',
+        email: 'yonas@example.com', phone: '+251955998877',
+        room_type: 'double', check_in: '2026-01-15', check_out: '2026-01-18',
+        guests: 2, requests: '',
+        status: 'pending', created_at: '2025-11-26T16:45:00Z'
+    },
+    {
+        id: 'RM-DEMO006', type: 'room', name: 'Meron Tadesse',
+        email: 'meron@example.com', phone: '+251966221144',
+        room_type: 'suite', check_in: '2025-11-20', check_out: '2025-11-23',
+        guests: 2, requests: 'Late check-in around 11 PM',
+        status: 'cancelled', created_at: '2025-11-10T12:00:00Z'
+    },
+
+    // ==================== RESTAURANT BOOKINGS ====================
+    {
+        id: 'RS-DEMO001', type: 'restaurant', name: 'Marta Girma',
+        email: 'marta@example.com', phone: '+251944556677',
+        date: '2025-12-12', time: '19:30', guests: 4,
+        table_preference: 'window', requests: 'Birthday dinner - bring cake at the end',
+        status: 'confirmed', created_at: '2025-11-21T16:00:00Z'
+    },
+    {
+        id: 'RS-DEMO002', type: 'restaurant', name: 'Dawit Haile',
+        email: 'dawit@example.com', phone: '+251955667788',
+        date: '2025-12-15', time: '20:00', guests: 2,
+        table_preference: 'outdoor', requests: 'Vegetarian menu options please',
+        status: 'pending', created_at: '2025-11-23T11:45:00Z'
+    },
+    {
+        id: 'RS-DEMO003', type: 'restaurant', name: 'Hanna Alemu',
+        email: 'hanna@example.com', phone: '+251966778899',
+        date: '2025-12-18', time: '13:00', guests: 6,
+        table_preference: 'private', requests: 'Business lunch - quiet corner preferred',
+        status: 'confirmed', created_at: '2025-11-24T08:30:00Z'
+    },
+    {
+        id: 'RS-DEMO004', type: 'restaurant', name: 'Kalkidan Assefa',
+        email: 'kalkidan@example.com', phone: '+251977331155',
+        date: '2025-12-22', time: '18:30', guests: 2,
+        table_preference: 'any', requests: '',
+        status: 'pending', created_at: '2025-11-25T19:10:00Z'
+    },
+    {
+        id: 'RS-DEMO005', type: 'restaurant', name: 'Bereket Solomon',
+        email: 'bereket@example.com', phone: '+251988441166',
+        date: '2025-12-25', time: '20:30', guests: 8,
+        table_preference: 'private', requests: 'Christmas family dinner - set menu arrangement',
+        status: 'confirmed', created_at: '2025-11-26T10:00:00Z'
+    },
+    {
+        id: 'RS-DEMO006', type: 'restaurant', name: 'Rahel Bekele',
+        email: 'rahel@example.com', phone: '+251999551177',
+        date: '2025-11-28', time: '12:30', guests: 3,
+        table_preference: 'window', requests: 'Cancelled due to weather',
+        status: 'cancelled', created_at: '2025-11-15T13:15:00Z'
+    }
+];
             for (const rec of demo) {
                 await DB.add(rec);
             }
