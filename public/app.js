@@ -105,16 +105,20 @@ statConfirmed: $('#stat-confirmed'),
             });
         },
         switch(tab) {
-            els.tabBtns.forEach(btn => {
-                const active = btn.dataset.tab === tab;
-                btn.classList.toggle('bg-emerald-600', active);
-                btn.classList.toggle('text-white', active);
-                btn.classList.toggle('text-gray-600', !active);
-                btn.classList.toggle('hover:bg-gray-100', !active);
-            });
-            els.roomForm.classList.toggle('hidden', tab !== 'room');
-            els.restaurantForm.classList.toggle('hidden', tab !== 'restaurant');
-        }
+    els.tabBtns.forEach(btn => {
+        const active = btn.dataset.tab === tab;
+        btn.classList.toggle('bg-emerald-600', active);
+        btn.classList.toggle('text-white', active);
+        btn.classList.toggle('text-gray-600', !active);
+        btn.classList.toggle('hover:bg-gray-100', !active);
+    });
+    els.roomForm.classList.toggle('hidden', tab !== 'room');
+    els.restaurantForm.classList.toggle('hidden', tab !== 'restaurant');
+    els.reportsForm.classList.toggle('hidden', tab !== 'reports');
+
+    // Auto-load reports when the tab is opened
+    if (tab === 'reports') Reports.load();
+}
     };
 
     // ========== Form Handlers ==========
