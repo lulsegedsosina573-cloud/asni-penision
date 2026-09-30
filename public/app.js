@@ -402,11 +402,11 @@ const Reports = {
 };
     // ========== Bootstrap ==========
     function init() {
-        Utils.setMinDates();
-        Tabs.init();
-        Forms.init();
-    }
-
+    Utils.setMinDates();
+    Tabs.init();
+    Forms.init();
+    Reports.init();
+}
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
