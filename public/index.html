@@ -191,7 +191,74 @@
                 </form>
             </div>
         </div>
+<!-- Reports Section -->
+<div id="reports-form" class="form-section hidden">
+    <div class="bg-white rounded-lg shadow-md p-4 sm:p-8">
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-3">
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-800">📊 Booking Reports</h3>
+            <button id="reports-refresh-btn"
+                class="bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition text-xs sm:text-sm">
+                🔄 Refresh
+            </button>
+        </div>
 
+        <!-- Summary Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-3 text-center">
+                <div id="stat-total" class="text-2xl font-bold text-emerald-700">0</div>
+                <div class="text-xs text-emerald-600 mt-1">Total</div>
+            </div>
+            <div class="bg-teal-50 border border-teal-200 rounded-lg p-3 text-center">
+                <div id="stat-rooms" class="text-2xl font-bold text-teal-700">0</div>
+                <div class="text-xs text-teal-600 mt-1">Room</div>
+            </div>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-center">
+                <div id="stat-rest" class="text-2xl font-bold text-amber-700">0</div>
+                <div class="text-xs text-amber-600 mt-1">Restaurant</div>
+            </div>
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                <div id="stat-confirmed" class="text-2xl font-bold text-blue-700">0</div>
+                <div class="text-xs text-blue-600 mt-1">Confirmed</div>
+            </div>
+        </div>
+
+        <!-- Filter + Toggle -->
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+            <button data-filter="all" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-600 text-white">All</button>
+            <button data-filter="room" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">Rooms</button>
+            <button data-filter="restaurant" class="filter-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-100 text-gray-700">Restaurant</button>
+            <input type="text" id="reports-search" placeholder="Search name / email / ID…"
+                class="flex-1 min-w-[180px] px-3 py-1.5 border border-gray-300 rounded-lg text-xs outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto -mx-4 sm:mx-0">
+            <table class="min-w-full text-xs sm:text-sm">
+                <thead>
+                    <tr class="bg-gray-50 text-gray-600 uppercase text-[10px] sm:text-xs">
+                        <th class="px-3 py-2 text-left font-semibold">ID</th>
+                        <th class="px-3 py-2 text-left font-semibold">Type</th>
+                        <th class="px-3 py-2 text-left font-semibold">Name</th>
+                        <th class="px-3 py-2 text-left font-semibold hidden sm:table-cell">Email</th>
+                        <th class="px-3 py-2 text-left font-semibold hidden md:table-cell">Phone</th>
+                        <th class="px-3 py-2 text-left font-semibold">Details</th>
+                        <th class="px-3 py-2 text-left font-semibold hidden sm:table-cell">Guests</th>
+                        <th class="px-3 py-2 text-left font-semibold">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="reports-tbody" class="divide-y divide-gray-100">
+                    <tr>
+                        <td colspan="8" class="px-3 py-8 text-center text-gray-400">Loading…</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="reports-empty" class="hidden text-center text-gray-400 py-8 text-sm">
+            No bookings yet.
+        </div>
+    </div>
+</div>
         <!-- My Bookings Section -->
         <section id="bookings" class="mt-12">
             <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-6">My Bookings</h3>
