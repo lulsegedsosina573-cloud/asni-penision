@@ -91,7 +91,10 @@ statConfirmed: $('#stat-confirmed'),
 
         getBookings(email) {
             return API.request(`/bookings?email=${encodeURIComponent(email)}`);
-        }
+        },
+        getAllBookings() {
+    return API.request('/bookings');
+}
     };
 
     // ========== Tab Controller ==========
